@@ -196,7 +196,7 @@ export default function Home() {
               variants={fadeUp}
               className="lg:w-1/2"
             >
-              <div className="aspect-[4/3] overflow-hidden relative">
+              <div className="aspect-[3/4] overflow-hidden relative">
                 <img
                   src={aboutImg}
                   alt="Agroforestry System"

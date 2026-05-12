@@ -47,13 +47,13 @@ function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-md border-border py-5 shadow-sm"
-            : "bg-transparent py-8"
+            ? "bg-background/95 backdrop-blur-md border-border py-4 shadow-sm"
+            : "bg-transparent py-6"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
           <div
-            className={`font-serif text-2xl font-bold tracking-tight cursor-pointer transition-colors ${
+            className={`font-serif text-xl font-bold tracking-tight cursor-pointer transition-colors ${
               isScrolled ? "text-foreground" : "text-white"
             }`}
             onClick={() => scrollTo("hero")}
@@ -67,7 +67,7 @@ function Navbar() {
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className={`group relative text-base font-medium uppercase tracking-widest transition-colors duration-200 ${
+                className={`group relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
                   isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"
                 }`}
               >

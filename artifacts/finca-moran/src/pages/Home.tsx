@@ -20,8 +20,11 @@ import gal6 from "@/assets/images/gallery-6.jpg";
 import gal7 from "@/assets/images/gallery-7.jpg";
 import gal8 from "@/assets/images/gallery-8.jpg";
 
+const navItems = ["sobre-nosotros", "productos", "galeria", "contacto"];
+
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +35,7 @@ function Navbar() {
   }, []);
 
   const scrollTo = (id: string) => {
+    setMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -39,40 +43,76 @@ function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md border-border py-4 shadow-sm"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <div
-          className={`font-serif text-xl font-bold tracking-tight cursor-pointer transition-colors ${
-            isScrolled ? "text-foreground" : "text-white"
-          }`}
-          onClick={() => scrollTo("hero")}
-        >
-          FINCA MORAN
+    <>
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent ${
+          isScrolled
+            ? "bg-background/95 backdrop-blur-md border-border py-4 shadow-sm"
+            : "bg-transparent py-6"
+        }`}
+      >
+        <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+          <div
+            className={`font-serif text-xl font-bold tracking-tight cursor-pointer transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
+            onClick={() => scrollTo("hero")}
+          >
+            FINCA MORAN
+          </div>
+
+          {/* Desktop menu */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollTo(item)}
+                className={`group relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
+                  isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"
+                }`}
+              >
+                {item.replace("-", " ")}
+                <span className={`absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover:w-full ${
+                  isScrolled ? "bg-foreground" : "bg-white"
+                }`} />
+              </button>
+            ))}
+          </div>
+
+          {/* Hamburger button */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Abrir menú"
+          >
+            <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+            <span className={`block w-6 h-[1.5px] transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+            <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+          </button>
         </div>
-        <div className="hidden md:flex space-x-8">
-          {["sobre-nosotros", "productos", "galeria", "contacto"].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className={`group relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
-                isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"
-              }`}
-            >
-              {item.replace("-", " ")}
-              <span className={`absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover:w-full ${
-                isScrolled ? "bg-foreground" : "bg-white"
-              }`} />
-            </button>
-          ))}
-        </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile menu overlay */}
+      <motion.div
+        initial={false}
+        animate={menuOpen ? { opacity: 1, y: 0, pointerEvents: "auto" } : { opacity: 0, y: -16, pointerEvents: "none" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="fixed inset-0 z-40 bg-background/98 backdrop-blur-md flex flex-col items-center justify-center gap-10 md:hidden"
+      >
+        {navItems.map((item, i) => (
+          <motion.button
+            key={item}
+            initial={false}
+            animate={menuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.3, delay: menuOpen ? i * 0.07 : 0 }}
+            onClick={() => scrollTo(item)}
+            className="font-serif text-3xl text-foreground uppercase tracking-widest hover:text-primary transition-colors duration-200"
+          >
+            {item.replace("-", " ")}
+          </motion.button>
+        ))}
+      </motion.div>
+    </>
   );
 }
 

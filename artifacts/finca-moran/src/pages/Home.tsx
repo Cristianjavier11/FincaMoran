@@ -243,7 +243,7 @@ export default function Home() {
           variants={fadeUp}
           className="text-center mb-16 md:mb-24 px-6"
         >
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">El Origen</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">Nuestra Tierra</h2>
           <div className="w-12 h-[1px] bg-primary mx-auto"></div>
         </motion.div>
 

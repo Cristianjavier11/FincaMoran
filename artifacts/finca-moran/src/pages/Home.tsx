@@ -156,7 +156,7 @@ export default function Home() {
               variants={fadeUp}
               className="lg:w-1/2"
             >
-              <div className="aspect-[4/3] overflow-hidden relative max-w-sm mx-auto">
+              <div className="aspect-[4/3] overflow-hidden relative max-w-md mx-auto">
                 <img
                   src={aboutImg}
                   alt="Agroforestry System"

@@ -1,0 +1,91 @@
+Crea una aplicación web moderna, elegante y responsiva para una cafetería artesanal llamada “Finca Moran”, ubicada en Nayarit, México. La página debe transmitir una sensación natural, artesanal, cálida y premium, inspirada en el café de especialidad, la naturaleza y los paisajes montañosos.
+
+Información del negocio:
+
+Nombre: Finca Moran
+
+Descripción:
+Elaboramos cafés especiales a partir de diferentes variedades, tanto de nuestra propia producción como de agricultores locales de Nayarit, México.
+
+Acerca de nosotros:
+Desde las montañas de Nayarit llega café Finca Moran que nace como un proyecto donde apostamos por hacer las cosas distinto; bajo un sistema agroforestal donde el café crece a su ritmo, en sombra, en equilibrio con la tierra que lo rodea. Ubicado en Xalisco, dentro del Eje Volcánico Transversal, este origen reúne todo lo que hace único a un café: altura, microclimas, suelos volcánicos y una biodiversidad que se traduce en taza.
+
+Dirección:
+Nayarit, México.
+
+Teléfonos:
+- Mariana: 3320273108
+- Ismael: 3326313429
+
+Red social:
+- Instagram: fincamoran_coffee_farm
+
+La aplicación web debe incluir:
+
+1. Inicio / Hero Section
+- Imagen principal relacionada con café artesanal, granos de café, montañas o cafetales.
+- Nombre “Finca Moran” destacado.
+- Eslogan elegante relacionado con café de especialidad.
+- Botón principal como “Conoce nuestro café”.
+- Diseño cálido con tonos café, beige, verde natural y colores tierra.
+
+2. Sobre Nosotros
+- Explicar el origen del café Finca Moran.
+- Hablar del sistema agroforestal.
+- Resaltar el origen en Xalisco, Nayarit.
+- Mencionar el Eje Volcánico Transversal, la altura, microclimas, suelos volcánicos y biodiversidad.
+
+3. Productos / Servicios
+Crear tarjetas visuales para:
+- Café de especialidad
+- Producción propia
+- Agricultores locales de Nayarit
+- Café bajo sombra
+- Sistema agroforestal
+- Café premium mexicano
+
+4. Galería
+- Incluir imágenes de café, granos, cafetales, montañas, tazas y procesos artesanales.
+- Usar diseño tipo grid responsivo.
+- Agregar efectos hover suaves.
+
+5. Contacto
+Mostrar únicamente información de contacto, sin formulario:
+- Dirección: Nayarit, México
+- Mariana: 3320273108
+- Ismael: 3326313429
+- Instagram: fincamoran_coffee_farm
+
+Agregar botones para:
+- llamar a Mariana
+- llamar a Ismael
+- abrir Instagram
+
+6. Footer personalizado
+El footer debe incluir:
+- Nombre del negocio: Finca Moran
+- Dirección: Nayarit, México
+- Teléfonos de contacto
+- Red social: fincamoran_coffee_farm
+- Frase final relacionada con café artesanal y origen mexicano
+- Derechos reservados
+
+Requisitos de diseño:
+- Diseño responsivo para laptop y móvil
+- Estilo elegante, natural y artesanal
+- Colores tierra, café, beige y verde
+- Tipografía moderna y legible
+- Tarjetas con sombras suaves
+- Botones con efectos hover
+- Animaciones ligeras
+- Navegación limpia
+- Apariencia profesional tipo landing page
+
+Requisitos técnicos:
+- Usar React, Vite, HTML, CSS y JavaScript o TypeScript
+- Código bien organizado
+- Componentes reutilizables
+- Compatible con Replit
+- Preparado para subir a GitHub y desplegar en Vercel
+- No incluir formulario de contacto
+- Generar todo el código completo del proyecto

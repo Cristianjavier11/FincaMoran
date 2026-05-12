@@ -1,0 +1,157 @@
+uploads = []
+
+[[generated]]
+id = "qer8iDzjbHnH4WvjKc2e5"
+uri = "file://src/assets/images/hero.png"
+type = "image"
+title = "cinematic coffee farm mist"
+
+[[generated]]
+id = "WtS3ioQbDPCeqI2zH9Pt_"
+uri = "file://src/assets/images/about.png"
+type = "image"
+title = "agroforestry coffee plants"
+
+[[generated]]
+id = "wTZjjwMSeIwXtGkaeQuJc"
+uri = "file://src/assets/images/product-especialidad.png"
+type = "image"
+title = "specialty coffee beans"
+
+[[generated]]
+id = "I4Xoovlqs37ts-czMS1dg"
+uri = "file://src/assets/images/product-propia.png"
+type = "image"
+title = "coffee harvest hands"
+
+[[generated]]
+id = "IPGjVFZk-sYhXRuxDkjVx"
+uri = "file://src/assets/images/product-agricultores.png"
+type = "image"
+title = "local farmers landscape"
+
+[[generated]]
+id = "ZMr15uqk6qLAvos_fKNxY"
+uri = "file://src/assets/images/product-sombra.png"
+type = "image"
+title = "shade grown canopy"
+
+[[generated]]
+id = "cC70nwl621_cjJWudanM6"
+uri = "file://src/assets/images/product-agroforestal.png"
+type = "image"
+title = "agroforestry system"
+
+[[generated]]
+id = "MQp5dodc_3y3HgAjA7jEj"
+uri = "file://src/assets/images/product-premium.png"
+type = "image"
+title = "premium cup coffee"
+
+[[generated]]
+id = "gr99_reKStZ_JEAJR-k8S"
+uri = "file://src/assets/images/gallery-1.png"
+type = "image"
+title = "raw coffee beans"
+
+[[generated]]
+id = "vCb8CAiVwBIyrx0GHioVB"
+uri = "file://src/assets/images/gallery-2.png"
+type = "image"
+title = "mountain cafetal mist"
+
+[[generated]]
+id = "UYKPGXyevXm68CJYU_hKn"
+uri = "file://artifacts/finca-moran/src/assets/images/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "HQgtjSMhwiCPkl_J_4HZ4"
+uri = "file://artifacts/finca-moran/src/assets/images/about.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "JPeHue9Zhs2ZLQQ6ul5Yr"
+uri = "file://artifacts/finca-moran/src/assets/images/test.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "X9LpnFn_AwEfdRf5JmS-l"
+uri = "file://artifacts/finca-moran/src/assets/images/product-especialidad.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "SpEemK27vu6RBPL5Bekf7"
+uri = "file://artifacts/finca-moran/src/assets/images/product-propia.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "fcw8RiEBIZa_axMBOD-OG"
+uri = "file://artifacts/finca-moran/src/assets/images/product-agricultores.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "HjxBWDSjZ95zQllooJULA"
+uri = "file://artifacts/finca-moran/src/assets/images/product-sombra.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "p65w9F8IX3xemvuuwVMsc"
+uri = "file://artifacts/finca-moran/src/assets/images/product-agroforestal.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "c_NwDp76PB7mq424YGjRp"
+uri = "file://artifacts/finca-moran/src/assets/images/product-premium.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "1pOdLZ_iR7OG4xpwlLJBz"
+uri = "file://artifacts/finca-moran/src/assets/images/gallery-1.png"
+type = "image"
+title = "generated_image"
+
+[[outputs]]
+id = "YuCrlG5dJDnQsROG-XiJ-"
+uri = "file://src/assets/images/gallery-3.jpg"
+type = "image"
+title = "artisan coffee brewing process pour over"
+
+[[outputs]]
+id = "9lmQ3DCJq1vqzWOS4Lqhi"
+uri = "file://src/assets/images/gallery-4.jpg"
+type = "image"
+title = "hands holding warm coffee cup mountain"
+
+[[outputs]]
+id = "wLl2f_0_dC-5NI7mIAOH7"
+uri = "file://src/assets/images/gallery-5.jpg"
+type = "image"
+title = "mexican coffee farmer smiling"
+
+[[outputs]]
+id = "kF4P-MTAoCPoqXw4O860D"
+uri = "file://src/assets/images/gallery-6.jpg"
+type = "image"
+title = "rich dark volcanic soil close up"
+
+[[outputs]]
+id = "xBcQSmqGZwngv_kdliLCp"
+uri = "file://src/assets/images/gallery-7.jpg"
+type = "image"
+title = "coffee beans drying in the sun"
+
+[[outputs]]
+id = "zUnXt3Jp1XUpb58ywGAC5"
+uri = "file://src/assets/images/gallery-8.jpg"
+type = "image"
+title = "ripe red coffee cherry on branch golden hour"

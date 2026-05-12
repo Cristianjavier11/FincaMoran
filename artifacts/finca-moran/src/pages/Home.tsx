@@ -6,9 +6,9 @@ import heroImg from "@/assets/images/hero.png";
 import aboutImg from "@/assets/images/about.png";
 import prodEspImg from "@assets/IMG_4119.JPG_1778568466785.jpeg";
 import prodPropiaImg from "@assets/IMG_4617.JPG_1778568409406.jpeg";
-import prodAgrImg from "@/assets/images/product-agricultores-real.jpg";
+import prodAgrImg from "@/assets/images/product-agricultores-v2.png";
 import prodSombraImg from "@/assets/images/product-sombra-real.jpg";
-import prodAgroImg from "@/assets/images/product-agroforestal-real.jpg";
+import prodAgroImg from "@/assets/images/product-agroforestal-v2.png";
 import prodPremImg from "@/assets/images/product-premium.png";
 
 import gal1 from "@/assets/images/gallery-1.png";

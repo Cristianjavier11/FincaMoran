@@ -60,11 +60,14 @@ function Navbar() {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className={`text-sm font-medium uppercase tracking-widest transition-colors hover:opacity-70 ${
+              className={`group relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
                 isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"
               }`}
             >
               {item.replace("-", " ")}
+              <span className={`absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover:w-full ${
+                isScrolled ? "bg-foreground" : "bg-white"
+              }`} />
             </button>
           ))}
         </div>

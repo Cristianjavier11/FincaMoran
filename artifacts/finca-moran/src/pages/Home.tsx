@@ -376,7 +376,7 @@ export default function Home() {
           </motion.div>
 
           <div className="border-t border-white/10 pt-8 text-center text-white/40 text-sm font-light flex flex-col md:flex-row justify-between items-center">
-            <p>© 2025 Finca Moran. Todos los derechos reservados.</p>
+            <p>© 2026 Finca Moran. Todos los derechos reservados.</p>
             <p className="mt-4 md:mt-0">De Nayarit para el mundo.</p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-import heroImg from "@/assets/images/hero.png";
+import heroImg from "@/assets/images/hero-real.jpg";
 import aboutImg from "@/assets/images/about.png";
 import prodEspImg from "@/assets/images/img-4119.jpg";
 import prodPropiaImg from "@/assets/images/img-4617.jpg";

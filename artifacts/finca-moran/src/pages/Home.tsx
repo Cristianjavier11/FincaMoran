@@ -118,7 +118,7 @@ function Navbar() {
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const y = useTransform(scrollYProgress, [0, 0.5], ["0%", "8%"]);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -142,15 +142,16 @@ export default function Home() {
       {/* HERO SECTION */}
       <section id="hero" className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center">
         <motion.div
-          style={{ y, willChange: "transform", backfaceVisibility: "hidden" }}
+          style={{
+            y,
+            willChange: "transform",
+            backgroundImage: `url(${heroImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+          }}
           className="absolute inset-0 z-0"
         >
-          <img
-            src={heroImg}
-            alt="Finca Moran"
-            className="w-full h-full object-cover object-center"
-            style={{ imageRendering: "auto", transform: "translateZ(0)" }}
-          />
           <div className="absolute inset-0 bg-black/40" />
         </motion.div>
 

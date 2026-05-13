@@ -141,11 +141,15 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section id="hero" className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center">
-        <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <motion.div
+          style={{ y, willChange: "transform", backfaceVisibility: "hidden" }}
+          className="absolute inset-0 z-0"
+        >
           <img
             src={heroImg}
             alt="Finca Moran"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
+            style={{ imageRendering: "auto", transform: "translateZ(0)" }}
           />
           <div className="absolute inset-0 bg-black/40" />
         </motion.div>

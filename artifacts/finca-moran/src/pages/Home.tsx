@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 import heroImg from "@/assets/images/hero-real.jpg";
-import aboutImg from "@/assets/images/about.png";
+import aboutImg from "@/assets/images/about-real.jpg";
 import prodEspImg from "@/assets/images/img-4119.jpg";
 import prodPropiaImg from "@/assets/images/img-4617.jpg";
 import prodAgrImg from "@/assets/images/sunset-nayarit.jpg";

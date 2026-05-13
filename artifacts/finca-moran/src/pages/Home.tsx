@@ -11,14 +11,14 @@ import prodSombraImg from "@/assets/images/product-sombra-real.jpg";
 import prodAgroImg from "@/assets/images/product-agroforestal-v2.png";
 import prodPremImg from "@/assets/images/product-premium.png";
 
-import gal1 from "@/assets/images/gallery-1.png";
-import gal2 from "@/assets/images/gallery-2.png";
-import gal3 from "@/assets/images/gallery-3.jpg";
+import gal1 from "@/assets/images/gal-1-real.jpg";
+import gal2 from "@/assets/images/gal-2-real.jpg";
+import gal3 from "@/assets/images/gal-3-real.jpg";
 import gal4 from "@/assets/images/gallery-4.jpg";
 import gal5 from "@/assets/images/sunset-nayarit.jpg";
-import gal6 from "@/assets/images/gallery-6.jpg";
+import gal6 from "@/assets/images/gal-6-real.jpg";
 import gal7 from "@/assets/images/gallery-7.jpg";
-import gal8 from "@/assets/images/gallery-8.jpg";
+import gal8 from "@/assets/images/gal-8-real.jpg";
 
 const navItems = ["sobre-nosotros", "productos", "galeria", "contacto"];
 

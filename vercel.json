@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm --filter @workspace/finca-moran run build",
+  "outputDirectory": "artifacts/finca-moran/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null
+}

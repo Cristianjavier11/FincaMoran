@@ -8,7 +8,7 @@ import prodEspImg from "@/assets/images/img-4119.jpg";
 import prodPropiaImg from "@/assets/images/img-4617.jpg";
 import prodAgrImg from "@/assets/images/sunset-nayarit.jpg";
 import prodSombraImg from "@/assets/images/product-sombra-real.jpg";
-import prodAgroImg from "@/assets/images/product-agroforestal-v2.png";
+import prodAgroImg from "@/assets/images/gal-3-real.jpg";
 import prodPremImg from "@/assets/images/product-premium.png";
 
 import gal1 from "@/assets/images/gal-1-real.jpg";

@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Globe } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { LANGUAGES, Language } from "@/lib/i18n";
 
 import heroImg from "@/assets/images/hero-real.jpg";
 import aboutImg from "@/assets/images/about-real.jpg";
@@ -20,11 +23,82 @@ import gal6 from "@/assets/images/gal-6-real.jpg";
 import gal7 from "@/assets/images/gallery-7.jpg";
 import gal8 from "@/assets/images/gal-8-real.jpg";
 
-const navItems = ["sobre-nosotros", "productos", "galeria", "contacto"];
+const productImages = [prodEspImg, prodPropiaImg, prodAgrImg, prodSombraImg, prodAgroImg, prodPremImg];
+
+function LanguageSwitcher({ isScrolled }: { isScrolled: boolean }) {
+  const { language, setLanguage } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const current = LANGUAGES.find((l) => l.code === language);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 px-2 py-1 rounded-sm ${
+          isScrolled
+            ? "text-muted-foreground hover:text-foreground"
+            : "text-white/80 hover:text-white"
+        }`}
+        aria-label="Select language"
+      >
+        <Globe className="w-4 h-4" />
+        <span className="hidden sm:inline">{current?.flag} {current?.label}</span>
+        <span className="sm:hidden">{current?.flag}</span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute right-0 top-full mt-2 w-44 bg-background border border-border shadow-lg z-50 py-1 rounded-sm"
+          >
+            {LANGUAGES.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => { setLanguage(lang.code as Language); setOpen(false); }}
+                className={`w-full text-left px-4 py-2.5 text-sm flex items-center gap-3 transition-colors duration-150 ${
+                  language === lang.code
+                    ? "bg-muted text-foreground font-medium"
+                    : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                }`}
+              >
+                <span className="text-base">{lang.flag}</span>
+                <span>{lang.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 function Navbar() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: "sobre-nosotros", label: t.nav.about },
+    { id: "productos", label: t.nav.products },
+    { id: "galeria", label: t.nav.gallery },
+    { id: "contacto", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,33 +136,37 @@ function Navbar() {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
-                key={item}
-                onClick={() => scrollTo(item)}
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
                 className={`group relative text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
                   isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"
                 }`}
               >
-                {item.replace("-", " ")}
+                {item.label}
                 <span className={`absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover:w-full ${
                   isScrolled ? "bg-foreground" : "bg-white"
                 }`} />
               </button>
             ))}
+            <LanguageSwitcher isScrolled={isScrolled} />
           </div>
 
-          {/* Hamburger button */}
-          <button
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Abrir menú"
-          >
-            <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
-            <span className={`block w-6 h-[1.5px] transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
-            <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
-          </button>
+          {/* Mobile: language + hamburger */}
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageSwitcher isScrolled={isScrolled} />
+            <button
+              className="flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label="Abrir menú"
+            >
+              <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+              <span className={`block w-6 h-[1.5px] transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+              <span className={`block w-6 h-[1.5px] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""} ${isScrolled ? "bg-foreground" : "bg-white"}`} />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -101,14 +179,14 @@ function Navbar() {
       >
         {navItems.map((item, i) => (
           <motion.button
-            key={item}
+            key={item.id}
             initial={false}
             animate={menuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.3, delay: menuOpen ? i * 0.07 : 0 }}
-            onClick={() => scrollTo(item)}
+            onClick={() => scrollTo(item.id)}
             className="font-serif text-3xl text-foreground uppercase tracking-widest hover:text-primary transition-colors duration-200"
           >
-            {item.replace("-", " ")}
+            {item.label}
           </motion.button>
         ))}
       </motion.div>
@@ -117,6 +195,7 @@ function Navbar() {
 }
 
 export default function Home() {
+  const { t } = useLanguage();
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 0.5], ["0%", "8%"]);
 
@@ -129,9 +208,7 @@ export default function Home() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -170,7 +247,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-white/90 text-lg md:text-2xl font-light mb-10 max-w-2xl"
           >
-            Café de especialidad cultivado bajo sombra en las montañas volcánicas de Nayarit.
+            {t.hero.subtitle}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -184,7 +261,7 @@ export default function Home() {
                 document.getElementById("sobre-nosotros")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Conoce nuestro café
+              {t.hero.cta}
             </Button>
           </motion.div>
         </div>
@@ -218,19 +295,13 @@ export default function Home() {
               className="lg:w-1/2 space-y-8"
             >
               <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-                Nuestra Historia
+                {t.about.heading}
               </h2>
               <div className="w-12 h-[1px] bg-primary"></div>
               <div className="space-y-6 text-muted-foreground text-lg leading-relaxed font-light">
-                <p>
-                  En el corazón del Eje Volcánico Transversal, en Xalisco, Nayarit, nace Finca Moran. Un espacio donde el tiempo parece detenerse y la naturaleza dicta el ritmo.
-                </p>
-                <p>
-                  Nuestro café crece lentamente en un sistema agroforestal bajo sombra. La altitud, los ricos suelos volcánicos y los microclimas únicos de nuestra montaña se entrelazan para crear un grano de especialidad excepcional.
-                </p>
-                <p>
-                  No solo cultivamos café; preservamos un ecosistema. Cada taza es un tributo a la biodiversidad de nuestra tierra, al esfuerzo de nuestros agricultores locales y a la herencia del café premium mexicano.
-                </p>
+                <p>{t.about.p1}</p>
+                <p>{t.about.p2}</p>
+                <p>{t.about.p3}</p>
               </div>
             </motion.div>
           </div>
@@ -247,7 +318,7 @@ export default function Home() {
             variants={fadeUp}
             className="text-center mb-16 md:mb-24"
           >
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">Nuestra Esencia</h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">{t.products.heading}</h2>
             <div className="w-12 h-[1px] bg-primary mx-auto"></div>
           </motion.div>
 
@@ -258,18 +329,11 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
           >
-            {[
-              { title: "Café de Especialidad", desc: "Selección rigurosa de granos con perfiles de taza excepcionales.", img: prodEspImg },
-              { title: "Producción Propia", desc: "Cuidado absoluto desde la semilla hasta tu taza.", img: prodPropiaImg },
-              { title: "Agricultores Locales", desc: "Trabajo justo y mano a mano con la comunidad de Nayarit.", img: prodAgrImg },
-              { title: "Café Bajo Sombra", desc: "Maduración lenta que intensifica los sabores y aromas.", img: prodSombraImg },
-              { title: "Sistema Agroforestal", desc: "Respeto por la biodiversidad y el equilibrio del bosque.", img: prodAgroImg },
-              { title: "Premium Mexicano", desc: "Orgullosamente cultivado en tierras volcánicas.", img: prodPremImg },
-            ].map((item, i) => (
+            {t.products.items.map((item, i) => (
               <motion.div key={i} variants={fadeUp} className="group cursor-pointer">
                 <div className="aspect-square overflow-hidden mb-6 bg-muted">
                   <img
-                    src={item.img}
+                    src={productImages[i]}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -291,7 +355,7 @@ export default function Home() {
           variants={fadeUp}
           className="text-center mb-16 md:mb-24 px-6"
         >
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">Nuestra Tierra</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">{t.gallery.heading}</h2>
           <div className="w-12 h-[1px] bg-primary mx-auto"></div>
         </motion.div>
 
@@ -307,7 +371,7 @@ export default function Home() {
             >
               <img
                 src={img}
-                alt={`Galeria ${i + 1}`}
+                alt={`${t.gallery.heading} ${i + 1}`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-multiply" />
@@ -327,19 +391,17 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24"
           >
             <div>
-              <h2 className="font-serif text-4xl md:text-5xl text-white mb-8">Visítanos</h2>
+              <h2 className="font-serif text-4xl md:text-5xl text-white mb-8">{t.contact.visitHeading}</h2>
               <div className="space-y-6 text-white/70 font-light text-lg">
-                <p>Nayarit, México</p>
+                <p>{t.contact.location}</p>
                 <div className="w-12 h-[1px] bg-white/20"></div>
-                <p className="italic">
-                  "El buen café es un reflejo de la tierra que lo vio nacer."
-                </p>
+                <p className="italic">{t.contact.quote}</p>
               </div>
             </div>
 
             <div className="space-y-8">
-              <h3 className="font-serif text-2xl text-white mb-6">Contacto</h3>
-              
+              <h3 className="font-serif text-2xl text-white mb-6">{t.contact.contactHeading}</h3>
+
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
                   <div>
@@ -348,11 +410,11 @@ export default function Home() {
                   </div>
                   <a href="tel:3320273108">
                     <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none font-sans">
-                      Llamar
+                      {t.contact.call}
                     </Button>
                   </a>
                 </div>
-                
+
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
                   <div>
                     <span className="text-white/80 font-light block">Ismael</span>
@@ -360,7 +422,7 @@ export default function Home() {
                   </div>
                   <a href="tel:3326313429">
                     <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none font-sans">
-                      Llamar
+                      {t.contact.call}
                     </Button>
                   </a>
                 </div>
@@ -372,7 +434,7 @@ export default function Home() {
                   </div>
                   <a href="https://instagram.com/fincamoran_coffee_farm" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none font-sans">
-                      Seguir
+                      {t.contact.follow}
                     </Button>
                   </a>
                 </div>
@@ -381,8 +443,8 @@ export default function Home() {
           </motion.div>
 
           <div className="border-t border-white/10 pt-8 text-center text-white/40 text-sm font-light flex flex-col md:flex-row justify-between items-center">
-            <p>© 2026 Finca Moran. Todos los derechos reservados.</p>
-            <p className="mt-4 md:mt-0">De Nayarit para el mundo.</p>
+            <p>{t.contact.copyright}</p>
+            <p className="mt-4 md:mt-0">{t.contact.tagline}</p>
           </div>
         </div>
       </footer>

@@ -404,6 +404,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span className="text-white/80 font-light">Información</span>
                   <a href="https://wa.me/523326313429" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none font-sans gap-2">
                       <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">

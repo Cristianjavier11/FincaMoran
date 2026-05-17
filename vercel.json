@@ -1,0 +1,5 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "artifacts/finca-moran/dist/public",
+  "installCommand": "pnpm install"
+}
